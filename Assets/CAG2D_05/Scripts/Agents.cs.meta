@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0064ba027a8064a85a577f651baa343a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - gameSettings: {fileID: 11400000, guid: eae67c67b0a2245b095c5ca4916009f5, type: 2}
+  - agentSettings: {fileID: 11400000, guid: a48add03ab80644659bd90e5a7c9b68c, type: 2}
+  - agentPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

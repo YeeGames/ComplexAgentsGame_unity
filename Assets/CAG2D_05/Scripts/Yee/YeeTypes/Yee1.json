@@ -1,0 +1,32 @@
+{
+  "Yee": {
+    "YeeFamily": {
+      "YeeTypeFamily": {
+        "Yee2EType": [
+          "Yang",
+          "Yin"
+        ],
+        "Yee3EType": [
+          "Rock",
+          "Scissors",
+          "Cloth"
+        ]
+      },
+      "YeeInterTypeFamily": {
+        "Yee2EInterType": [
+          "Me",
+          "You"
+        ],
+        "Yee3EInterType": [
+          "Self",
+          "Ke",
+          "BeKe"
+        ]
+      },
+      "YeeRuleFamily": {
+        "Yee2ERule": "Yee2ERule",
+        "Yee3ERule": "Yee3ERule"
+      }
+    }
+  }
+}
