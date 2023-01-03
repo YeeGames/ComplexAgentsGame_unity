@@ -123,27 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &166791065
+--- !u!1001 &153552192
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7749182644917708957, guid: f9c4a6d4fa47043688eb44a6883fb5ed,
-        type: 3}
-      propertyPath: radiusSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: -7749182644917708957, guid: f9c4a6d4fa47043688eb44a6883fb5ed,
-        type: 3}
-      propertyPath: yeeFamilyEnum
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 325121577299000894, guid: f9c4a6d4fa47043688eb44a6883fb5ed,
         type: 3}
       propertyPath: m_Name
-      value: Agents
+      value: AgentsManager
       objectReference: {fileID: 0}
     - target: {fileID: 3727752456458541811, guid: f9c4a6d4fa47043688eb44a6883fb5ed,
         type: 3}

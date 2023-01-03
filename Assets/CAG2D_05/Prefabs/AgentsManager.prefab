@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3727752456458541811}
   - component: {fileID: -7749182644917708957}
   m_Layer: 0
-  m_Name: Agents
+  m_Name: AgentsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,9 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: 2cf5c513838cb4e59a8281b1fb0cacc1, type: 2}
-  agent: {fileID: 486444529336302277, guid: 4554401fd90f0425499e1720dd02b071, type: 3}
+  yeeAgent: {fileID: 4189460797519478018, guid: 4554401fd90f0425499e1720dd02b071,
+    type: 3}
   radiusSize: 30
-  _yee2ERule: {fileID: 0}
-  yeeFamilyEnum: 1
-  yeeRule: {fileID: 0}
-  yee: {fileID: 0}

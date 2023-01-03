@@ -191,9 +191,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1722038911113815791}
   - component: {fileID: 8004930575998053242}
-  - component: {fileID: 486444529336302277}
+  - component: {fileID: 4189460797519478018}
   m_Layer: 0
-  m_Name: Agent
+  m_Name: YeeAgent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &486444529336302277
+--- !u!114 &4189460797519478018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,7 +261,7 @@ MonoBehaviour:
   effectorCircleCollider2D: {fileID: 0}
   ruleCircleCollider2D: {fileID: 0}
   physicsMaterial2D: {fileID: 0}
-  agentRuleEffector: {fileID: 0}
+  agentRuleEffector: {fileID: 5038881728993415723}
   maxSpeed: 0
   maxAngularSpeed: 0
 --- !u!1 &8664559872414916649

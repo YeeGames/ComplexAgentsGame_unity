@@ -13,7 +13,8 @@ namespace CAG2D_05
     {
         [HideInInspector] public GameSettings gameSettings;
 
-        [FormerlySerializedAs("agent")] [HideInInspector] public YeeAgent yeeAgent;
+        // [FormerlySerializedAs("agent")] [HideInInspector] public YeeAgent yeeAgent;
+        [HideInInspector] public YeeAgent yeeAgent;
 
         private int _totalAgent;
 
@@ -77,11 +78,18 @@ namespace CAG2D_05
         // Update is called once per frame
         void FixedUpdate()
         {
-            //TODO 获取所有的粒子对象
-            
-            // TODO 计算交互情况
-            // YeeInteraction.CalculateYeeInteraction();
+            //TODO 获取所有的粒子对象，用一个数组向量
+            // agentGameObjects = GameObject.FindGameObjectsWithTag(yeeAgent.Tag);
             //
+            // for (int i = 0; i < agentGameObjects.Length; i++)
+            // {
+            //     agentGameObject = agentGameObjects[i];
+            //     
+            // }
+            // // yeeAgent.GameObject()
+            //
+            // // TODO 计算交互情况
+            // YeeInteraction.CalculateYeeInteraction();
         }
     }
 }

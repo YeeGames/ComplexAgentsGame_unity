@@ -1,3 +1,23 @@
 fileFormatVersion: 2
 guid: 1b0de742bba0244fbb1ca3164eb12abd
-timeCreated: 1652792840
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - aset: {fileID: 11400000, guid: 158951c52faa34408842dc76a8ec850c, type: 2}
+  - gset: {fileID: 11400000, guid: 2cf5c513838cb4e59a8281b1fb0cacc1, type: 2}
+  - rset: {fileID: 11400000, guid: 513331da0f82742b8aed3485df722ce4, type: 2}
+  - spriteRenderer: {instanceID: 0}
+  - rigidbody2D: {instanceID: 0}
+  - pointEffector: {instanceID: 0}
+  - colliderCircleCollider2D: {instanceID: 0}
+  - effectorCircleCollider2D: {instanceID: 0}
+  - ruleCircleCollider2D: {instanceID: 0}
+  - physicsMaterial2D: {instanceID: 0}
+  - agentRuleEffector: {fileID: 5038881728993415723, guid: 4554401fd90f0425499e1720dd02b071,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
