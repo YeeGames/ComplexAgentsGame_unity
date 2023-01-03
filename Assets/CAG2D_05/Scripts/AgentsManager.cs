@@ -13,8 +13,9 @@ namespace CAG2D_05
     {
         [HideInInspector] public GameSettings gameSettings;
 
-        // [FormerlySerializedAs("agent")] [HideInInspector] public YeeAgent yeeAgent;
         [HideInInspector] public YeeAgent yeeAgent;
+        [HideInInspector] public GameObject[] agentGameObjects;
+        [HideInInspector] public GameObject agentGameObject;
 
         private int _totalAgent;
 
@@ -30,8 +31,7 @@ namespace CAG2D_05
 
         [HideInInspector] private YeeType yeeType;
 
-        // [HideInInspector] internal YeeInteraction YeeInteraction;
-        // private YeeTypeChooserNotStatics _yeeTypeChooserNotStatics = new YeeTypeChooserNotStatics();
+        [HideInInspector] internal YeeInteraction YeeInteraction;
 
         /// <summary>
         /// 使用静态的YeeTypeChooser
@@ -79,17 +79,17 @@ namespace CAG2D_05
         void FixedUpdate()
         {
             //TODO 获取所有的粒子对象，用一个数组向量
-            // agentGameObjects = GameObject.FindGameObjectsWithTag(yeeAgent.Tag);
-            //
-            // for (int i = 0; i < agentGameObjects.Length; i++)
-            // {
-            //     agentGameObject = agentGameObjects[i];
-            //     
-            // }
-            // // yeeAgent.GameObject()
-            //
-            // // TODO 计算交互情况
-            // YeeInteraction.CalculateYeeInteraction();
+            agentGameObjects = GameObject.FindGameObjectsWithTag(yeeAgent.Tag);
+            
+            for (int i = 0; i < agentGameObjects.Length; i++)
+            {
+                agentGameObject = agentGameObjects[i];
+                
+            }
+            // yeeAgent.GameObject()
+            
+            // TODO 计算交互情况
+            YeeInteraction.CalculateYeeInteraction();
         }
     }
 }

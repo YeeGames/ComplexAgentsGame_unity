@@ -41,13 +41,11 @@ namespace CAG2D_05
 
 
         [HideInInspector] private YeeRule yeeRule;
-        // public IYeeRule yeeRule;
 
-
-        // [HideInInspector] public Yee yee;
-        // [HideInInspector] public YeeFamily yeeFamily;
-
-        // private YeeTypeChooserNotStatics _yeeTypeChooserNotStatics = new YeeTypeChooserNotStatics();
+        /// <summary>
+        /// Unity标签
+        /// </summary>
+        public string Tag { get; set; } = "agent";
 
 
         [HideInInspector] public SpriteRenderer spriteRenderer;
