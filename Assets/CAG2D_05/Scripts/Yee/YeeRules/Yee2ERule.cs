@@ -151,10 +151,10 @@ namespace CAG2D_05
         {
             Rigidbody2D thisRigidbody2D = this.gameObject.transform.GetComponentInParent<Rigidbody2D>();
             Vector2 thisPosition2D = this.gameObject.transform.GetComponentInParent<Transform>().position;
-            string thisYeeType = this.gameObject.transform.GetComponentInParent<Agent>().aset.YeeType;
+            string thisYeeType = this.gameObject.transform.GetComponentInParent<YeeAgent>().aset.YeeType;
             Rigidbody2D thatRigidbody2D = otherCollider2D.gameObject.transform.GetComponentInParent<Rigidbody2D>();
             Vector2 thatPosition2D = otherCollider2D.gameObject.transform.GetComponentInParent<Transform>().position;
-            string thatYeeType = otherCollider2D.gameObject.transform.GetComponentInParent<Agent>().aset.YeeType;
+            string thatYeeType = otherCollider2D.gameObject.transform.GetComponentInParent<YeeAgent>().aset.YeeType;
             _yeeInterType = GetInterRule(thisYeeType, thatYeeType);
             ApplyBehaviorRule(_yeeInterType, thisRigidbody2D, thisPosition2D, thatRigidbody2D, thatPosition2D);
         }

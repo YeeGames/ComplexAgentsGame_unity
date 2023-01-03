@@ -161,13 +161,13 @@ namespace CAG2D_05
         {
             Rigidbody2D thisRigidbody2D = this.gameObject.transform.GetComponentInParent<Rigidbody2D>();
             Vector2 thisPosition2D = this.gameObject.transform.GetComponentInParent<Transform>().position;
-            string thisYeeType = this.gameObject.transform.GetComponentInParent<Agent>().YeeType;
-            // string thisYeeInterType = this.gameObject.transform.GetComponentInParent<Agent>().aset.YeeInterTypes;
+            string thisYeeType = this.gameObject.transform.GetComponentInParent<YeeAgent>().YeeType;
+            // string thisYeeInterType = this.gameObject.transform.GetComponentInParent<YeeAgent>().aset.YeeInterTypes;
             Rigidbody2D thatRigidbody2D = otherCollider2D.gameObject.transform.GetComponentInParent<Rigidbody2D>();
             Vector2 thatPosition2D = otherCollider2D.gameObject.transform.GetComponentInParent<Transform>().position;
-            // Yee3ETypeEnum thatYeeType = otherCollider2D.gameObject.transform.GetComponentInParent<Agent>().yee3ETypeEnum;
+            // Yee3ETypeEnum thatYeeType = otherCollider2D.gameObject.transform.GetComponentInParent<YeeAgent>().yee3ETypeEnum;
             // yeeFamilyEnum thatYeeFamily = otherCollider2D.gameObject.transform.GetComponent<yee>().yeeFamilyEnum;
-            string thatYeeType = otherCollider2D.gameObject.transform.GetComponentInParent<Agent>().YeeType;
+            string thatYeeType = otherCollider2D.gameObject.transform.GetComponentInParent<YeeAgent>().YeeType;
             // List<string> thatYeeType = YeeFamily.YeeTypes;
             // this._yee3EInterTypeEnum = GetInterRule(thisYeeFamily.YeeTypes[1], thatYeeType);
             YeeInterType = GetInterRule(thisYeeType, thatYeeType);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CAG2D_05
 {
-    public class Agent : MonoBehaviour
+    public class YeeAgent : MonoBehaviour
     {
         /// <summary>
         /// 设定Agent设置项

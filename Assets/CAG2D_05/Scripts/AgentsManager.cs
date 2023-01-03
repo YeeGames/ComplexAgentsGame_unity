@@ -3,16 +3,17 @@ using System.CodeDom;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using CAG2D_05;
+using UnityEngine.Serialization;
 
 // using Unity.Mathematics;
 
 namespace CAG2D_05
 {
-    public class Agents : MonoBehaviour
+    public class AgentsManager : MonoBehaviour
     {
         [HideInInspector] public GameSettings gameSettings;
 
-        [HideInInspector] public Agent agent;
+        [FormerlySerializedAs("agent")] [HideInInspector] public YeeAgent yeeAgent;
 
         private int _totalAgent;
 
@@ -28,7 +29,7 @@ namespace CAG2D_05
 
         [HideInInspector] private YeeType yeeType;
 
-        [HideInInspector] internal YeeInteraction YeeInteraction;
+        // [HideInInspector] internal YeeInteraction YeeInteraction;
         // private YeeTypeChooserNotStatics _yeeTypeChooserNotStatics = new YeeTypeChooserNotStatics();
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace CAG2D_05
             {
                 for (var i = 0; i < gameSettings.numAgent; i++) // 遍历单类yeeType之所有预定数量，以生成agent
                 {
-                    Agent a = Agent.Instantiate(agent);
+                    YeeAgent a = YeeAgent.Instantiate(yeeAgent);
 
                     Vector2 pos = (Vector2) (this.transform.position) + Random.insideUnitCircle * radiusSize;
 
@@ -63,7 +64,7 @@ namespace CAG2D_05
 
             // 计算agent总数
             _totalAgent = gameSettings.numAgent * yeeType.NumElement;
-            YeeInteraction  = new YeeInteraction(_totalAgent);
+            // YeeInteraction  = new YeeInteraction(_totalAgent);
         }
 
 
@@ -79,7 +80,7 @@ namespace CAG2D_05
             //TODO 获取所有的粒子对象
             
             // TODO 计算交互情况
-            YeeInteraction.CalculateYeeInteraction();
+            // YeeInteraction.CalculateYeeInteraction();
             //
         }
     }
