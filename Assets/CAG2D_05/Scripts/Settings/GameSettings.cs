@@ -12,7 +12,7 @@ namespace CAG2D_05
         public short dimention = 2;
 
         /// <summary>
-        /// agent初始数量
+        /// 个体初始数量
         /// </summary>
         public int numAgent = 10;
 
@@ -46,7 +46,7 @@ namespace CAG2D_05
         /// </summary>
         public YeeFamilyEnum yeeFamilyEnum = YeeFamilyEnum.Yee3E;
 
-        public YeeType YeeType = new YeeType();
+        // public YeeType YeeType = new YeeType();
 
 
         // public YeeFamily yeeFamily=new Yee3E();

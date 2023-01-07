@@ -15,7 +15,7 @@ namespace CAG2D_05
         private string _yeeInterType;
 
 
-        private float forceStrength = 0f;
+        private float fieldStrength = 0f;
         private int direction = 1; // 方向取值1与-1。1表示推力方向，-1表示拉力方向；
         private float expCoefficient = 2f;
         private CircleCollider2D ruleCircleCollider2D;
@@ -68,7 +68,7 @@ namespace CAG2D_05
             this.rset = ruleSettings;
             // this.rset = this.transform.GetComponent<YeeTypeFamilyEnum>();
             this.ruleCircleCollider2D.radius = this.rset.forceEffectiveRadius;
-            this.forceStrength = this.rset.forceStrength;
+            this.fieldStrength = this.rset.fieldStrength;
             this.expCoefficient = this.rset.expCoefficient;
             this.direction = this.rset.direction;
             Debug.Log(this.rset.direction);
@@ -90,21 +90,21 @@ namespace CAG2D_05
             if (yeeInterType == Yee2EInterTypeEnum.Me.ToString())
             {
                 rb1.AddForce(
-                    forceStrength * (-(float) direction * direction_from_a1_to_a2) /
+                    fieldStrength * (-(float) direction * direction_from_a1_to_a2) /
                     math.pow(distance_from_a1_to_a2, expCoefficient), ForceMode2D.Force);
                 rb2.AddForce(
-                    forceStrength * ((float) direction * direction_from_a1_to_a2) /
+                    fieldStrength * ((float) direction * direction_from_a1_to_a2) /
                     math.pow(distance_from_a1_to_a2, expCoefficient),
                     ForceMode2D.Force);
             }
             else if (yeeInterType == Yee2EInterTypeEnum.You.ToString())
             {
                 rb1.AddForce(
-                    forceStrength * ((float) direction * direction_from_a1_to_a2) /
+                    fieldStrength * ((float) direction * direction_from_a1_to_a2) /
                     math.pow(distance_from_a1_to_a2, expCoefficient),
                     ForceMode2D.Force);
                 rb2.AddForce(
-                    forceStrength * (-(float) direction * direction_from_a1_to_a2) /
+                    fieldStrength * (-(float) direction * direction_from_a1_to_a2) /
                     math.pow(distance_from_a1_to_a2, expCoefficient),
                     ForceMode2D.Force);
             }
@@ -120,21 +120,21 @@ namespace CAG2D_05
         //     if (t1 == t2)
         //     {
         //         rb1.AddForce(
-        //             forceStrength * (-(float) direction * direction_from_a1_to_a2) /
+        //             fieldStrength * (-(float) direction * direction_from_a1_to_a2) /
         //             math.pow(distance_from_a1_to_a2, expCoefficient), ForceMode2D.Force);
         //         rb2.AddForce(
-        //             forceStrength * ((float) direction * direction_from_a1_to_a2) /
+        //             fieldStrength * ((float) direction * direction_from_a1_to_a2) /
         //             math.pow(distance_from_a1_to_a2, expCoefficient),
         //             ForceMode2D.Force);
         //     }
         //     else
         //     {
         //         rb1.AddForce(
-        //             forceStrength * ((float) direction * direction_from_a1_to_a2) /
+        //             fieldStrength * ((float) direction * direction_from_a1_to_a2) /
         //             math.pow(distance_from_a1_to_a2, expCoefficient),
         //             ForceMode2D.Force);
         //         rb2.AddForce(
-        //             forceStrength * (-(float) direction * direction_from_a1_to_a2) /
+        //             fieldStrength * (-(float) direction * direction_from_a1_to_a2) /
         //             math.pow(distance_from_a1_to_a2, expCoefficient),
         //             ForceMode2D.Force);
         //     }

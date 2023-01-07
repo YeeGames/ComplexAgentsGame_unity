@@ -13,7 +13,7 @@ namespace CAG2D_05
         // public YeeTypeFamilyEnum yeeTypeFamily;
         // public YeeRule yeeRule;
         // public bool isEnableForce;
-        public float forceStrength = 10f; // 力场强度；
+        public float fieldStrength = 10f; // 力场强度；
         public float forceEffectiveRadius = 5f; // 力场影响半径；
         public float expCoefficient = 2f; // 力场衰减指数系数；
         public int direction = 1;

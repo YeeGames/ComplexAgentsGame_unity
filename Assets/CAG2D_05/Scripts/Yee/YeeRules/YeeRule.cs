@@ -96,7 +96,7 @@ namespace CAG2D_05
         {
         }
 
-        public virtual string GetInterRule(string thisYeeType, string thatYeeType)
+        public virtual string CalcInterType(string thisYeeType, string thatYeeType)
         {
             return null;
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CAG2D_05
 {
@@ -16,10 +17,9 @@ namespace CAG2D_05
 
         // private static List<string> yeeTypes;
         // private Yee _yee;
-        [SerializeField] private string YeeInterType;
+        private string _yeeInterType;
 
-
-        [SerializeField] private float forceStrength = 10f;
+        [SerializeField] private float fieldStrength = 10f;
         [SerializeField] private int direction = 1; // 方向取值1与-1。1表示推力方向，-1表示拉力方向；
         [SerializeField] private float expCoefficient = 2f;
         [SerializeField] private CircleCollider2D ruleCircleCollider2D;
@@ -81,7 +81,7 @@ namespace CAG2D_05
             this.rset = ruleSettings;
             // this.rset = this.transform.GetComponent<YeeTypeFamilyEnum>();
             this.ruleCircleCollider2D.radius = this.rset.forceEffectiveRadius;
-            this.forceStrength = this.rset.forceStrength;
+            this.fieldStrength = this.rset.fieldStrength;
             this.expCoefficient = this.rset.expCoefficient;
             this.direction = this.rset.direction;
             Debug.Log(this.rset.direction);
@@ -99,20 +99,24 @@ namespace CAG2D_05
         /// </summary>
         /// <param name="thisYeeType">己方YeeType3E类型</param>
         /// <param name="thatYeeType">对方YeeType3E类型</param>
-        public override string GetInterRule(string thisYeeType, string thatYeeType)
+        public override string CalcInterType(string thisYeeType, string thatYeeType)
         {
             return Yee3EType.YeeRuleAdjecentMatrix[Array.IndexOf(Yee3EType.FromYeeTypeArray, thisYeeType), Array.IndexOf(Yee3EType.ToYeeTypeArray, thatYeeType)]; //BUG
         }
 
+        public string UpdateInterTypeMatrix(string yeeInterType)
+        {
+            return "";
+        }
 
         /// <summary>
         /// 应用行为规则
         /// </summary>
         /// <param name="yeeInterType">YeeTypeInter3E类型</param>
-        /// <param name="rb1">我方agent刚体</param>
-        /// <param name="pos1">我方agent位置</param>
-        /// <param name="rb2">对方agent刚体</param>
-        /// <param name="pos2">对方agent位置</param>
+        /// <param name="rb1">我方个体刚体</param>
+        /// <param name="pos1">我方个体位置</param>
+        /// <param name="rb2">对方个体刚体</param>
+        /// <param name="pos2">对方个体位置</param>
         public override void ApplyBehaviorRule(string yeeInterType, Rigidbody2D rb1, Vector2 pos1, Rigidbody2D rb2, Vector2 pos2)
         {
             Vector2 vector_from_a1_to_a2 = (Vector2) (pos2 - pos1);
@@ -121,29 +125,59 @@ namespace CAG2D_05
 
 
             // 应用施力规则。
-            // 如果是交互状态我方为Ke，则己方受到拉力，对方受到推力，形成效果力之于己方追逐对方逃避；
-            // 如果是交互状态我方为BeKe，则己方受到推力，对方受到拉力，形成效果力之于对方追逐我方逃避；
+            // 如果是交互状态我方为Ke，则己方受到拉力，对方受到推力，形成效果力之己方追逐对方逃避；
+            // 如果是交互状态我方为BeKe，则己方受到推力，对方受到拉力，形成效果力之对方追逐我方逃避；
             if (yeeInterType == Yee3EInterTypeEnum.Ke.ToString())
             {
                 rb1.AddForce(
-                    forceStrength * ((float) direction * direction_from_a1_to_a2) /
+                    fieldStrength * ((float) direction * direction_from_a1_to_a2) /
                     math.pow(distance_from_a1_to_a2, expCoefficient), ForceMode2D.Force);
                 rb2.AddForce(
-                    forceStrength * ((float) -direction * direction_from_a1_to_a2) /
+                    fieldStrength * ((float) -direction * direction_from_a1_to_a2) /
                     math.pow(distance_from_a1_to_a2, expCoefficient),
                     ForceMode2D.Force);
             }
             else if (yeeInterType == Yee3EInterTypeEnum.BeKe.ToString())
             {
                 rb1.AddForce(
-                    forceStrength * ((float) -direction * direction_from_a1_to_a2) /
+                    fieldStrength * ((float) -direction * direction_from_a1_to_a2) /
                     math.pow(distance_from_a1_to_a2, expCoefficient),
                     ForceMode2D.Force);
                 rb2.AddForce(
-                    forceStrength * ((float) direction * direction_from_a1_to_a2) /
+                    fieldStrength * ((float) direction * direction_from_a1_to_a2) /
                     math.pow(distance_from_a1_to_a2, expCoefficient),
                     ForceMode2D.Force);
             }
+            else if (yeeInterType == Yee3EInterTypeEnum.Self.ToString())
+            {
+                
+            }
+            
+            // // 应用施力规则。
+            // // 如果是交互状态我方为Ke，则己方受到拉力，对方受到推力，形成效果力之己方追逐对方逃避；
+            // // 如果是交互状态我方为BeKe，则己方受到推力，对方受到拉力，形成效果力之对方追逐我方逃避；
+            // if (yeeInterType == Yee3EInterTypeEnum.Ke.ToString())
+            // {
+            //     rb1.AddForce(
+            //         fieldStrength * ((float) direction * direction_from_a1_to_a2) /
+            //         math.pow(distance_from_a1_to_a2, expCoefficient), ForceMode2D.Force);
+            //     rb2.AddForce(
+            //         fieldStrength * ((float) -direction * direction_from_a1_to_a2) /
+            //         math.pow(distance_from_a1_to_a2, expCoefficient),
+            //         ForceMode2D.Force);
+            // }
+            // else if (yeeInterType == Yee3EInterTypeEnum.BeKe.ToString())
+            // {
+            //     rb1.AddForce(
+            //         fieldStrength * ((float) -direction * direction_from_a1_to_a2) /
+            //         math.pow(distance_from_a1_to_a2, expCoefficient),
+            //         ForceMode2D.Force);
+            //     rb2.AddForce(
+            //         fieldStrength * ((float) direction * direction_from_a1_to_a2) /
+            //         math.pow(distance_from_a1_to_a2, expCoefficient),
+            //         ForceMode2D.Force);
+            // }
+            
         }
 
 
@@ -169,9 +203,9 @@ namespace CAG2D_05
             // yeeFamilyEnum thatYeeFamily = otherCollider2D.gameObject.transform.GetComponent<yee>().yeeFamilyEnum;
             string thatYeeType = otherCollider2D.gameObject.transform.GetComponentInParent<YeeAgent>().YeeType;
             // List<string> thatYeeType = YeeFamily.YeeTypes;
-            // this._yee3EInterTypeEnum = GetInterRule(thisYeeFamily.YeeTypes[1], thatYeeType);
-            YeeInterType = GetInterRule(thisYeeType, thatYeeType);
-            ApplyBehaviorRule(YeeInterType, thisRigidbody2D, thisPosition2D, thatRigidbody2D, thatPosition2D);
+            // this._yee3EInterTypeEnum = CalcInterType(thisYeeFamily.YeeTypes[1], thatYeeType);
+            _yeeInterType = CalcInterType(thisYeeType, thatYeeType);
+            ApplyBehaviorRule(_yeeInterType, thisRigidbody2D, thisPosition2D, thatRigidbody2D, thatPosition2D);
         }
     }
 }

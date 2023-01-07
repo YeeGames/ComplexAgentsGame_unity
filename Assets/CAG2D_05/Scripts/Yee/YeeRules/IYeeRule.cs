@@ -3,7 +3,7 @@
 // namespace CAG2D_05
 // {
 //     
-//     public Yee3EInterTypeEnum GetInterRule();
+//     public Yee3EInterTypeEnum CalcInterType();
 //     public interface IYeeRule
 //     {
 //         public YeeTypeFamilyEnum GetTypeOfYeeTypeRule();

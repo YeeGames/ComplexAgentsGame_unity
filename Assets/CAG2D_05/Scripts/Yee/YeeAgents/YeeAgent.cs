@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CAG2D_05;
 using UnityEngine;
@@ -7,18 +8,18 @@ namespace CAG2D_05
     public class YeeAgent : MonoBehaviour
     {
         /// <summary>
-        /// 设定Agent设置项
+        /// 设定`Agent`设置项
         /// </summary>
         [HideInInspector] public AgentSettings aset;
 
 
         /// <summary>
-        /// 设定Game设置项
+        /// 设定`Game`设置项
         /// </summary>
         [HideInInspector] public GameSettings gset;
 
         /// <summary>
-        /// 设定Rule设置项
+        /// 设定`Rule`设置项
         /// </summary>
         [HideInInspector] public RuleSettings rset;
 
@@ -43,13 +44,13 @@ namespace CAG2D_05
         [HideInInspector] private YeeRule yeeRule;
 
         /// <summary>
-        /// Unity标签
+        /// Unity3D标签
         /// </summary>
         public string Tag { get; set; } = "agent";
 
 
         [HideInInspector] public SpriteRenderer spriteRenderer;
-        [HideInInspector] public new Rigidbody2D rigidbody2D;
+        [HideInInspector] public Rigidbody2D rigidbody2D;
         [HideInInspector] public PointEffector2D pointEffector;
         [HideInInspector] public CircleCollider2D colliderCircleCollider2D;
         [HideInInspector] public CircleCollider2D effectorCircleCollider2D;
@@ -90,7 +91,6 @@ namespace CAG2D_05
         /// 初始化
         /// </summary>
         /// <param name="agentSettings"></param>
-        /// <param name="ruleSettings"></param>
         public void Initialize(AgentSettings agentSettings)
         {
             this.SetAgentSettings(agentSettings);
@@ -177,6 +177,11 @@ namespace CAG2D_05
             this.rigidbody2D.velocity = Vector2.ClampMagnitude(rigidbody2D.velocity, maxSpeed); // 限制最大速度；
             this.rigidbody2D.angularVelocity = Mathf.Max(rigidbody2D.angularVelocity, maxAngularSpeed); // 限制最大角速度；
             // Debug.Log("updated");
+        }
+
+        public void OnTriggerStay(Collider other)
+        {
+            throw new NotImplementedException();
         }
     }
 }
