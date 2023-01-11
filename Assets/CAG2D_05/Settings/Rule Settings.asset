@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa623e3e9a9f48e4810dfe6400728478, type: 3}
   m_Name: Rule Settings
   m_EditorClassIdentifier: 
-  forceStrength: 10
+  fieldStrength: 10
   forceEffectiveRadius: 5
   expCoefficient: 0
-  direction: -1
+  direction: 1

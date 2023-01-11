@@ -1,11 +1,21 @@
 // using CAG2D_05;
 
+using Unity.Collections;
 using UnityEngine;
 
 namespace CAG2D_05
 {
     public abstract class YeeRule : MonoBehaviour
     {
+        [HideInInspector] private RuleSettings rset;
+        [ReadOnly] [SerializeField] internal float ruleCircleCollider2DRadius;
+        [ReadOnly] [SerializeField] protected float fieldStrength;
+        [ReadOnly] [SerializeField] protected float expCoefficient;
+        [ReadOnly] [SerializeField] protected int direction;
+        [ReadOnly] [SerializeField] internal string yeeInterType;
+
+
+        // internal float ruleCircleCollider2DRadius;
         // public RuleSettings rset;
         // public Yee3EType Yee3EType;
         // public string YeeInterType;
@@ -20,7 +30,6 @@ namespace CAG2D_05
         // private Rigidbody2D rb2;
         // private Transform tf1;
         // private Transform tf2;
-
 
 
         // /// <summary>
@@ -89,6 +98,12 @@ namespace CAG2D_05
 
         public virtual void SetRule(RuleSettings ruleSettings)
         {
+            // float ruleCircleCollider2DRadius = ruleSettings.forceEffectiveRadius;
+            // RuleCircleCollider2DRadius
+            this.ruleCircleCollider2DRadius = ruleSettings.forceEffectiveRadius;
+            this.fieldStrength = ruleSettings.fieldStrength;
+            this.expCoefficient = ruleSettings.expCoefficient;
+            this.direction = ruleSettings.direction;
         }
 
 

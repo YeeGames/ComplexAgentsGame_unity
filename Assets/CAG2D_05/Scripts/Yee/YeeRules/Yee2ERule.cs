@@ -6,11 +6,13 @@ namespace CAG2D_05
 {
     public class Yee2ERule : YeeRule //TODO 仿照Yee3eRule改造。
     {
-        private RuleSettings rset;
+        [HideInInspector] private RuleSettings rset;
 
-        private YeeFamily _yeeFamily;
-        private static Yee2E _yee2E;
-        private Yee _yee;
+        // private YeeFamily _yeeFamily;
+        // private static Yee2E _yee2E;
+        // private Yee _yee;
+
+        [SerializeField] public Yee2EType Yee2EType;
 
         private string _yeeInterType;
 
@@ -25,33 +27,33 @@ namespace CAG2D_05
         private Transform tf1;
         private Transform tf2;
 
-
-        /// <summary>
-        /// 起始Yee2EType向量
-        /// </summary>
-        private string[] fromYeeTypeArray = new string[]
-        {
-            _yee2E.YeeTypes[0], _yee2E.YeeTypes[1]
-        };
-
-
-        /// <summary>
-        /// 目标Yee2EType向量
-        /// </summary>
-        private string[] toYeeTypeArray = new string[]
-        {
-            _yee2E.YeeTypes[0], _yee2E.YeeTypes[1]
-        };
+        
+        // /// <summary>
+        // /// 起始Yee2EType向量
+        // /// </summary>
+        // private string[] fromYeeTypeArray = new string[]
+        // {
+        //     _yee2E.YeeTypes[0], _yee2E.YeeTypes[1]
+        // };
 
 
-        /// <summary>
-        /// Yee2ETypeInter之规则之邻接矩阵
-        /// </summary>
-        private string[,] yeeRuleAdjecentMatrix = new string[,]
-        {
-            {_yee2E.YeeInterTypes[0], _yee2E.YeeInterTypes[1]},
-            {_yee2E.YeeInterTypes[1], _yee2E.YeeInterTypes[0]},
-        };
+        // /// <summary>
+        // /// 目标Yee2EType向量
+        // /// </summary>
+        // private string[] toYeeTypeArray = new string[]
+        // {
+        //     _yee2E.YeeTypes[0], _yee2E.YeeTypes[1]
+        // };
+
+
+        // /// <summary>
+        // /// Yee2ETypeInter之规则之邻接矩阵
+        // /// </summary>
+        // private string[,] yeeRuleAdjecentMatrix = new string[,]
+        // {
+        //     {_yee2E.YeeInterTypes[0], _yee2E.YeeInterTypes[1]},
+        //     {_yee2E.YeeInterTypes[1], _yee2E.YeeInterTypes[0]},
+        // };
 
         public override void Initialize(RuleSettings ruleSettings)
         {
@@ -77,8 +79,10 @@ namespace CAG2D_05
 
         public string GetInterRule(string thisYeeType, string thatYeeType)
         {
-            string yeeInterType = yeeRuleAdjecentMatrix[Array.IndexOf(fromYeeTypeArray, thisYeeType), Array.IndexOf(toYeeTypeArray, thatYeeType)];
-            return yeeInterType;
+            return Yee2EType.YeeRuleAdjecentMatrix[Array.IndexOf(Yee2EType.FromYeeTypeArray, thisYeeType), Array.IndexOf(Yee2EType.ToYeeTypeArray, thatYeeType)]; //BUG
+
+            // string yeeInterType =Yee2EType.YeeRuleAdjecentMatrix[Array.IndexOf(fromYeeTypeArray, thisYeeType), Array.IndexOf(toYeeTypeArray, thatYeeType)];
+            // return yeeInterType;
         }
 
 

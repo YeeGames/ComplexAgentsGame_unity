@@ -15,8 +15,8 @@ MonoBehaviour:
   dimention: 2
   numAgent: 20
   pauseTime: 0
-  wallRadiu: 100
-  wallWidth: 100
+  wallRadiu: 50
+  wallWidth: 50
   physicsMaterialsFriction: 0
   physicsMaterialsBounciness: 1
   yeeFamilyEnum: 1

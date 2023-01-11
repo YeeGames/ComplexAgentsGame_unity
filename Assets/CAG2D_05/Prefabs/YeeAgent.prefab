@@ -254,6 +254,8 @@ MonoBehaviour:
   aset: {fileID: 11400000, guid: 158951c52faa34408842dc76a8ec850c, type: 2}
   gset: {fileID: 11400000, guid: 2cf5c513838cb4e59a8281b1fb0cacc1, type: 2}
   rset: {fileID: 11400000, guid: 513331da0f82742b8aed3485df722ce4, type: 2}
+  id: 
+  yeeType: 
   spriteRenderer: {fileID: 0}
   rigidbody2D: {fileID: 0}
   pointEffector: {fileID: 0}

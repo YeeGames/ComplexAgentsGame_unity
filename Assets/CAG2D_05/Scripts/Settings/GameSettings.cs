@@ -9,7 +9,7 @@ namespace CAG2D_05
         /// <summary>
         /// 游戏维度
         /// </summary>
-        public short dimention = 2;
+        public short dimension = 2;
 
         /// <summary>
         /// 个体初始数量

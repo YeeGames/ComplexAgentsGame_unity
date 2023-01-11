@@ -1,6 +1,5 @@
 using System;
-using System.Collections.Generic;
-using CAG2D_05;
+using Unity.Collections;
 using UnityEngine;
 
 namespace CAG2D_05
@@ -27,19 +26,20 @@ namespace CAG2D_05
         /// <summary>
         /// id
         /// </summary>
-        [HideInInspector] private string id;
+        [ReadOnly] [SerializeField] private string id;
 
         /// <summary>
         /// Yee类型
         /// </summary>
-        [HideInInspector] private string yeeType;
+        [ReadOnly] [SerializeField] private string yeeType;
 
         public string YeeType
         {
             get => yeeType;
-            set => yeeType = value;
+            // set => yeeType = value;
         }
-
+        
+        // public string YeeInterType
 
         [HideInInspector] private YeeRule yeeRule;
 
@@ -50,7 +50,7 @@ namespace CAG2D_05
 
 
         [HideInInspector] public SpriteRenderer spriteRenderer;
-        [HideInInspector] public Rigidbody2D rigidbody2D;
+        [HideInInspector] public new Rigidbody2D rigidbody2D;
         [HideInInspector] public PointEffector2D pointEffector;
         [HideInInspector] public CircleCollider2D colliderCircleCollider2D;
         [HideInInspector] public CircleCollider2D effectorCircleCollider2D;
@@ -62,23 +62,33 @@ namespace CAG2D_05
         [HideInInspector] public float maxSpeed;
         [HideInInspector] public float maxAngularSpeed;
 
+        public YeeAgent()
+        {
+        }
 
+        /// <summary>
+        /// 设置位置
+        /// </summary>
+        /// <param name="pos">位置</param>
         public void SetPosition(Vector2 pos)
         {
             transform.position = pos;
         }
 
-
+        /// <summary>
+        /// 设置速度
+        /// </summary>
+        /// <param name="vel">速度</param>
+        /// <param name="spe">初始速度</param>
         public void SetVelocity(Vector2 vel, float spe)
         {
             rigidbody2D.velocity = vel * spe;
         }
 
-        public void SetVelocity(Vector2 vel)
-        {
-            rigidbody2D.velocity = vel;
-        }
-
+        /// <summary>
+        /// 设置颜色
+        /// </summary>
+        /// <param name="col">颜色</param>
         public void SetColor(Color col)
         {
             if (spriteRenderer != null)
@@ -91,18 +101,12 @@ namespace CAG2D_05
         /// 初始化
         /// </summary>
         /// <param name="agentSettings"></param>
-        public void Initialize(AgentSettings agentSettings)
+        /// <param name="ruleSettings"></param>
+        public void Initialize(AgentSettings agentSettings, RuleSettings ruleSettings)
         {
-            this.SetAgentSettings(agentSettings);
-            // this.agentRuleEffector = this.gameObject.transform.Find("AgentRuleEffector").gameObject;
-            // this.yeeFamily = YeeTypeChooser.ChooseYeeFamily(this.agentRuleEffector, this.gset.yeeFamilyEnum);
-            // yee = YeeTypeChooser.ChooseYee(this.agentRuleEffector, this.gset.yeeFamilyEnum);
-
             this.yeeRule = YeeTypeChooser.ChooseYeeRule(agentRuleEffector, gset.yeeFamilyEnum);
-            // this.yeeRule = _yeeTypeChooserNotStatics.ChooseYeeRule(agentRuleEffector, this.gset.yeeFamilyEnum);
-            // YeeRule yeeRule = _yeeTypeChooserNotStatics.ChooseYeeRule(agentRuleEffector, gset.yeeFamilyEnum);
-
-            // this.yeeRule.Initialize(ruleSettings);
+            this.yeeRule.SetRule(ruleSettings);
+            this.SetAgentSettings(agentSettings);
         }
 
 
@@ -112,26 +116,24 @@ namespace CAG2D_05
         /// <param name="agentSettings"></param>
         public void SetAgentSettings(AgentSettings agentSettings)
         {
-            this.aset = agentSettings;
-            // this.yeeFamily = this.aset.yeeFamily;
-            this.id = this.aset.id;
-            this.yeeType = this.aset.YeeType;
-            this.name = this.aset.agentBaseName + this.aset.YeeType + this.id;
-            this.SetColor(this.aset.color);
-            this.SetPosition(this.aset.position);
-            this.SetVelocity(this.aset.velocity, this.aset.initSpeed);
-            this.colliderCircleCollider2D.radius = this.aset.collisionRadius;
-            this.effectorCircleCollider2D.radius = this.aset.magnitudeForceRadius;
-            this.pointEffector.forceMagnitude = this.aset.magnitudeForce;
-            this.maxSpeed = this.aset.maxSpeed;
-            this.maxAngularSpeed = this.aset.maxAngularSpeed;
-            this.rigidbody2D.mass = this.aset.mass;
-            this.rigidbody2D.drag = this.aset.linearDrag;
-            this.rigidbody2D.angularDrag = this.aset.angularDrag;
+            this.id = agentSettings.id;
+            this.yeeType = agentSettings.YeeType;
+            this.name = agentSettings.agentBaseName + agentSettings.YeeType + this.id;
+            this.SetColor(agentSettings.color);
+            this.SetPosition(agentSettings.position);
+            this.SetVelocity(agentSettings.velocity, agentSettings.initSpeed);
+            this.colliderCircleCollider2D.radius = agentSettings.collisionRadius;
+            this.effectorCircleCollider2D.radius = agentSettings.magnitudeForceRadius;
+            this.pointEffector.forceMagnitude = agentSettings.magnitudeForce;
+            this.maxSpeed = agentSettings.maxSpeed;
+            this.maxAngularSpeed = agentSettings.maxAngularSpeed;
+            this.rigidbody2D.mass = agentSettings.mass;
+            this.rigidbody2D.drag = agentSettings.linearDrag;
+            this.rigidbody2D.angularDrag = agentSettings.angularDrag;
 
 
-            // 自定义2D物理材质。
-            this.physicsMaterial2D = new PhysicsMaterial2D(); // 自行新建2D物理材质
+            /// 自定义2D物理材质。
+            this.physicsMaterial2D = new PhysicsMaterial2D();
             if (this.physicsMaterial2D != null)
             {
                 this.physicsMaterial2D.friction = this.aset.physicsMaterialFriction;
@@ -142,6 +144,9 @@ namespace CAG2D_05
             this.colliderCircleCollider2D.sharedMaterial = this.physicsMaterial2D;
             this.effectorCircleCollider2D.sharedMaterial = this.physicsMaterial2D;
             this.ruleCircleCollider2D.sharedMaterial = this.physicsMaterial2D;
+
+            /// 设置规则圆圈碰撞器之圆圈半径
+            this.ruleCircleCollider2D.radius = this.yeeRule.ruleCircleCollider2DRadius;
         }
 
 
@@ -154,10 +159,6 @@ namespace CAG2D_05
             this.ruleCircleCollider2D = this.gameObject.transform.Find("AgentRuleEffector").GetComponent<CircleCollider2D>();
             this.pointEffector = this.gameObject.transform.Find("AgentEffector").GetComponent<PointEffector2D>();
             this.agentRuleEffector = this.gameObject.transform.Find("AgentRuleEffector").gameObject;
-            // this.yeeRule = this.gameObject.transform.Find("AgentRuleEffector").GetComponent<YeeRule>();
-            // this.yeeRule = YeeTypeChooser.ChooseYeeRule(agentRuleEffector, gset.yeeFamilyEnum);
-
-            // Initialize(this.aset, this.rset);
         }
 
         // Start is called before the first frame update
@@ -174,14 +175,13 @@ namespace CAG2D_05
         private void FixedUpdate()
         {
             this.transform.Translate(Vector2.zero * (Time.deltaTime));
-            this.rigidbody2D.velocity = Vector2.ClampMagnitude(rigidbody2D.velocity, maxSpeed); // 限制最大速度；
-            this.rigidbody2D.angularVelocity = Mathf.Max(rigidbody2D.angularVelocity, maxAngularSpeed); // 限制最大角速度；
-            // Debug.Log("updated");
+            this.rigidbody2D.velocity = Vector2.ClampMagnitude(rigidbody2D.velocity, maxSpeed); /// 限制最大速度；
+            this.rigidbody2D.angularVelocity = Mathf.Max(rigidbody2D.angularVelocity, maxAngularSpeed); /// 限制最大角速度；
         }
 
-        public void OnTriggerStay(Collider other)
-        {
-            throw new NotImplementedException();
-        }
+        // public void OnTriggerStay(Collider other) //TODO
+        // {
+        //     throw new NotImplementedException();
+        // }
     }
 }

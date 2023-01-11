@@ -7,7 +7,7 @@ namespace CAG2D_05
         public GameSettings gameSettings;
         public LineRenderer lineRenderer; //LineRenderer组件
         public EdgeCollider2D edgeCollider2D;
-        public Rigidbody2D rigidbody2D;
+        public new Rigidbody2D rigidbody2D;
 
         private PhysicsMaterial2D physicsMaterial2D;
         Vector3 v; //圆心

@@ -34,10 +34,10 @@ namespace CAG2D_05
         /// </summary>
         public Color color = Color.white;
 
-        /// <summary>
-        /// Yee类型族
-        /// </summary>
-        [HideInInspector] public YeeFamily yeeFamily;
+        // /// <summary>
+        // /// Yee类型族
+        // /// </summary>
+        // [HideInInspector] public YeeFamily yeeFamily;
 
         public string YeeType;
 

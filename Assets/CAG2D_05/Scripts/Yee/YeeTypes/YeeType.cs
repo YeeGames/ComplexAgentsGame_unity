@@ -1,19 +1,20 @@
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 namespace CAG2D_05
 {
     public class YeeType
     {
-        private int _numElement;
-        private Color[] _colors;
-        private string[] _yeeTypes;
-        private string[] _yeeInterTypes;
+        [ReadOnly] [SerializeField] public int NumElement;
+        [ReadOnly] [SerializeField] public Color[] Colors;
+        [ReadOnly] [SerializeField] public string[] YeeTypes;
+        [ReadOnly] [SerializeField] public string[] YeeInterTypes;
 
         /// <summary>
         /// 起始YeeType向量
         /// </summary>
-        private string[] fromYeeTypeArray = new string[]
+        internal string[] FromYeeTypeArray = new string[]
         {
         };
 
@@ -21,65 +22,65 @@ namespace CAG2D_05
         /// <summary>
         /// 目标YeeType向量
         /// </summary>
-        private string[] toYeeTypeArray = new string[]
+        internal string[] ToYeeTypeArray = new string[]
         {
         };
 
         /// <summary>
         /// YeeTypeInter之规则之邻接矩阵
         /// </summary>
-        private string[,] yeeRuleAdjecentMatrix = new string[,]
+        internal string[,] YeeRuleAdjecentMatrix = new string[,]
         {
         };
 
 
-        public int setNumElement()
-        {
-            _numElement = 1;
-            return _numElement;
-        }
+        // internal int SetNumElement()
+        // {
+        //     NumElement = 0;
+        //     return NumElement;
+        // }
 
 
-        public int NumElement
-        {
-            get => _numElement;
-            set => _numElement = value;
-        }
-
-        public Color[] Colors
-        {
-            get => _colors;
-            set => _colors = value;
-        }
-
-        public string[] YeeTypes
-        {
-            get => _yeeTypes;
-            set => _yeeTypes = value;
-        }
-
-        public string[] YeeInterTypes
-        {
-            get => _yeeInterTypes;
-            set => _yeeInterTypes = value;
-        }
-
-        public string[] FromYeeTypeArray
-        {
-            get => fromYeeTypeArray;
-            set => fromYeeTypeArray = value;
-        }
-
-        public string[] ToYeeTypeArray
-        {
-            get => toYeeTypeArray;
-            set => toYeeTypeArray = value;
-        }
-
-        public string[,] YeeRuleAdjecentMatrix
-        {
-            get => yeeRuleAdjecentMatrix;
-            set => yeeRuleAdjecentMatrix = value;
-        }
+        // internal int NumElement
+        // {
+        //     get => _numElement;
+        //     set => _numElement = value;
+        // }
+        //
+        // internal Color[] Colors
+        // {
+        //     get => _colors;
+        //     set => _colors = value;
+        // }
+        //
+        // internal string[] YeeTypes
+        // {
+        //     get => _yeeTypes;
+        //     set => _yeeTypes = value;
+        // }
+        //
+        // internal string[] YeeInterTypes
+        // {
+        //     get => _yeeInterTypes;
+        //     set => _yeeInterTypes = value;
+        // }
+        //
+        // internal string[] FromYeeTypeArray
+        // {
+        //     get => _fromYeeTypeArray;
+        //     set => _fromYeeTypeArray = value;
+        // }
+        //
+        // internal string[] ToYeeTypeArray
+        // {
+        //     get => _toYeeTypeArray;
+        //     set => _toYeeTypeArray = value;
+        // }
+        //
+        // internal string[,] YeeRuleAdjecentMatrix
+        // {
+        //     get => _yeeRuleAdjecentMatrix;
+        //     set => _yeeRuleAdjecentMatrix = value;
+        // }
     }
 }
